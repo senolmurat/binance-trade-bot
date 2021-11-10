@@ -89,11 +89,7 @@ if len(sys.argv) > 1:
     except:
         print("ARGUMENT ERROR")
     client = Client(api_key, api_secret)
-    trading_altcoin(15)
+    while True:
+        trading_altcoin(15)
 else:
     print("ERROR --- Must run the script with arguments \n python bot.py 'api_key' 'api_secret'")
-
-
-
-
-#btc_block.Open.plot()
