@@ -3,7 +3,8 @@ from datetime import time
 from binance import Client
 import pandas as pd
 import ta
-import config
+import sys
+#import config
 
 
 def getData(symbol, interval, lookback):
@@ -81,8 +82,18 @@ def trading_altcoin(buy_amt , SL = 0.985 , Target = 1.02 , open_position=False):
                 break
 
 
+if len(sys.argv) > 1:
+    try:
+        api_key = str(sys.argv[1])
+        api_secret = str(sys.argv[2])
+    except:
+        print("ARGUMENT ERROR")
+    client = Client(api_key, api_secret)
+    trading_altcoin(15)
+else:
+    print("ERROR --- Must run the script with arguments \n python bot.py 'api_key' 'api_secret'")
 
-client = Client(config.api_key, config.api_secret)
-trading_altcoin(15)
+
+
 
 #btc_block.Open.plot()
